@@ -9,6 +9,30 @@
 
 }
 
+#speakButton {
+  background-color: #009688;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  
+
+}
+
+#speakButton:hover {
+  background-color: #008077;
+}
+
+
+
 .error-button {
     background-color: white;
     color: red;
