@@ -5,13 +5,30 @@
 <p id="title-placeholder">Enter the text you want to correct here</p>
 <form action="/grammar" method="POST">
     {% if txt == None %}
-    <input type="text" name="txt" class = "input-prompt" autofocus />
+    <input type="text" name="txt" class="input-prompt" autofocus />
     {% else %}
-    <input type="text" name="txt" class = "input-prompt" value="{{ txt }}" autofocus />
+    <input type="text" name="txt" class="input-prompt" id="corrected_text" value="{{ txt }}" autofocus />
+    <button id="speakButton">Speak</button>
     {% endif %}
-    
-    
+
     <button style="visibility: hidden;" type="submit"></button> <!--Keep this invisible-->
+
 </form>
+<script>
+    // DO NOT MOVE THIS TO index.js IT WILL CORRUPT!!
+document.addEventListener('DOMContentLoaded', function() {
+    const speakButton = document.getElementById('speakButton');
+    const textField = document.getElementById('corrected_text');
+
+    speakButton.addEventListener('click', () => {
+        const text = textField.value.trim();
+        if (text !== '') {
+            console.log("Speaking " + text)
+            const utterance = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(utterance);
+        }
+    });
+});
+</script>
 
 {% endblock %}
